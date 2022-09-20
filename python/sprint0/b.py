@@ -1,14 +1,21 @@
 from typing import List, Tuple
 
-def zipper(a: List[int], b: List[int]) -> List[int]:
-    # Здесь реализация вашего решения
-    pass
 
-def read_input() -> Tuple[List[int], List[int]]:
+def zipper(n: int, first_list: List[str], second_list: List[str]) -> List[str]:
+    result = []
+    for index in range(0, n):
+        result.append(first_list[index])
+        result.append(second_list[index])
+    return result
+
+
+def read_input() -> Tuple[int, List[str], List[str]]:
     n = int(input())
-    a = list(map(int, input().strip().split()))
-    b = list(map(int, input().strip().split()))
-    return a, b
+    first_list = input().strip().split()
+    second_list = input().strip().split()
+    return n, first_list, second_list
 
-a, b = read_input()
-print(" ".join(map(str, zipper(a, b))))
+
+if __name__ == "__main__":
+    n, first_list, second_list = read_input()
+    print(" ".join(zipper(n, first_list, second_list)))
