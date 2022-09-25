@@ -5,15 +5,15 @@ def get_weather_randomness(n: int, temperatures: List[int]) -> int:
     if n == 1:
         return 1
     count = 0
-    if temperatures[0] > temperatures[1]:
+    step_back = temperatures[0] - temperatures[1]
+    if step_back > 0:
         count += 1
     for i in range(1, n - 1):
-        if (
-            temperatures[i] > temperatures[i - 1]
-            and temperatures[i] > temperatures[i + 1]
-        ):
+        step_forward = temperatures[i + 1] - temperatures[i]
+        if step_back < 0 and step_forward < 0:
             count += 1
-    if temperatures[n - 2] < temperatures[n - 1]:
+        step_back = -step_forward
+    if step_back < 0:
         count += 1
     return count
 
