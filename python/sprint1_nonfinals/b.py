@@ -1,6 +1,8 @@
 def check_parity(a: int, b: int, c: int) -> bool:
-    # Здесь реализация вашего решения
-    pass
+    if a % 2 == b % 2 and c % 2 == b % 2:
+        return True
+    return False
+
 
 def print_result(result: bool) -> None:
     if result:
@@ -8,5 +10,7 @@ def print_result(result: bool) -> None:
     else:
         print("FAIL")
 
-a, b, c = map(int, input().strip().split())
-print_result(check_parity(a, b, c))
+
+if __name__ == "__main__":
+    a, b, c = map(int, input().strip().split())
+    print_result(check_parity(a, b, c))
