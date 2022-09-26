@@ -5,7 +5,6 @@ def factorize(number: int) -> List[int]:
     root_of_number = int(number ** (0.5) + 2)
     is_prime = [True] * root_of_number
     is_prime[0] = is_prime[1] = False
-    primes = [2]
     for i in range(3, int(root_of_number ** (0.5) + 2), 2):
         if is_prime[i]:
             for x in range(i * i, root_of_number, i):
