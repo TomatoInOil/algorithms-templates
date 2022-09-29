@@ -1,17 +1,16 @@
 from typing import List, Tuple
-import string
 
 
-def get_sum(number_list: int, k: int) -> List[str]:
-    result = list(str(number_list + k))
-    return result
+def get_sum(number_list: List[int], k: int) -> List[str]:
+    number_list.reverse()
+    for index in range(len(number_list)):
+        number_list[index] *= 10 ** (index)
+    return list(str(sum(number_list) + k))
 
 
-def read_input() -> Tuple[int, int]:
+def read_input() -> Tuple[List[int], int]:
     _ = input()
-    number_list = input().strip()
-    table = number_list.maketrans("", "", string.whitespace)
-    number_list = int(number_list.translate(table))
+    number_list = list(map(int, input().strip().split()))
     k = int(input())
     return number_list, k
 
