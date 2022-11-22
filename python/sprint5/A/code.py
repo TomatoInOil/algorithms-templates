@@ -4,17 +4,27 @@
 LOCAL = True
 
 if LOCAL:
-    class Node:  
-        def __init__(self, value, left=None, right=None):  
-            self.value = value  
-            self.right = right  
+
+    class Node:
+        def __init__(self, value, left=None, right=None):
+            self.value = value
+            self.right = right
             self.left = left
 
 
 def solution(root):
-    #  Your code
-    #  “ヽ(´▽｀)ノ”
-    pass
+    result = 0
+    if root.left is not None:
+        left_result = solution(root.left)
+        if result < left_result:
+            result = left_result
+    if result < root.value:
+        result = root.value
+    if root.right is not None:
+        right_result = solution(root.right)
+        if result < right_result:
+            result = right_result
+    return result
 
 
 def test():
@@ -24,5 +34,6 @@ def test():
     node4 = Node(2, node3, None)
     assert solution(node4) == 3
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     test()
