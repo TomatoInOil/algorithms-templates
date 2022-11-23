@@ -1,19 +1,27 @@
 # ! change LOCAL to False before submitting !
 # set LOCAL to True for local testing
 
-LOCAL = True
+LOCAL = False
 
 if LOCAL:
-    class Node:  
-        def __init__(self, left=None, right=None, value=0):  
+
+    class Node:
+        def __init__(self, left=None, right=None, value=0):
             self.right = right
             self.left = left
             self.value = value
 
+
 def print_range(node, l, r):
-    #  Your code
-    #  “ヽ(´▽｀)ノ”
-    pass
+    if node.left is not None:
+        if node.value >= l:
+            print_range(node.left, l, r)
+    if l <= node.value <= r:
+        print(node.value)
+    if node.right is not None:
+        if node.value <= r:
+            print_range(node.right, l, r)
+
 
 def test():
     node1 = Node(None, None, 2)
@@ -26,5 +34,6 @@ def test():
     print_range(node7, 2, 8)
     # expected output: 2 5 8 8
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     test()
