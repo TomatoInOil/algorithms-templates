@@ -1,23 +1,32 @@
 # ! change LOCAL to False before submitting !
 # set LOCAL to True for local testing
 
-LOCAL = True
+LOCAL = False
 
 if not LOCAL:
     from node import Node
 
 if LOCAL:
-    class Node:  
-        def __init__(self, left=None, right=None, value=0):  
+
+    class Node:
+        def __init__(self, left=None, right=None, value=0):
             self.right = right
             self.left = left
             self.value = value
 
 
 def insert(root, key):
-    #  Your code
-    #  “ヽ(´▽｀)ノ”
-    pass
+    if key >= root.value:
+        if root.right is None:
+            root.right = Node(None, None, key)
+        else:
+            insert(root.right, key)
+    if key < root.value:
+        if root.left is None:
+            root.left = Node(None, None, key)
+        else:
+            insert(root.left, key)
+    return root
 
 
 def test():
@@ -28,5 +37,6 @@ def test():
     assert new_head is node3
     assert new_head.left.value == 6
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     test()
